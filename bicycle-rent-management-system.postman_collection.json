@@ -1,0 +1,611 @@
+{
+  "info": {
+    "name": "Bicycle Rent Management System",
+    "description": "Seed data, CRUD, derived queries, JPQL queries, business rules, return charges, and bonus endpoints for the bicycle rent backend.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    { "key": "helmetId", "value": "", "type": "string" },
+    { "key": "basketId", "value": "", "type": "string" },
+    { "key": "childSeatId", "value": "", "type": "string" },
+    { "key": "phoneHolderId", "value": "", "type": "string" },
+    { "key": "rack1Id", "value": "", "type": "string" },
+    { "key": "rack2Id", "value": "", "type": "string" },
+    { "key": "rack3Id", "value": "", "type": "string" },
+    { "key": "rack4Id", "value": "", "type": "string" },
+    { "key": "bike1Id", "value": "", "type": "string" },
+    { "key": "bike2Id", "value": "", "type": "string" },
+    { "key": "bike3Id", "value": "", "type": "string" },
+    { "key": "customer1Id", "value": "", "type": "string" },
+    { "key": "customer2Id", "value": "", "type": "string" },
+    { "key": "customer3Id", "value": "", "type": "string" },
+    { "key": "customer4Id", "value": "", "type": "string" },
+    { "key": "customer5Id", "value": "", "type": "string" },
+    { "key": "hire1Id", "value": "", "type": "string" },
+    { "key": "hire2Id", "value": "", "type": "string" },
+    { "key": "hire3Id", "value": "", "type": "string" },
+    { "key": "hire4Id", "value": "", "type": "string" },
+    { "key": "hire5Id", "value": "", "type": "string" },
+    { "key": "hire6Id", "value": "", "type": "string" },
+    { "key": "hire7Id", "value": "", "type": "string" },
+    { "key": "hire8Id", "value": "", "type": "string" },
+    { "key": "hire9Id", "value": "", "type": "string" },
+    { "key": "hire10Id", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Seed data: Accessories",
+      "item": [
+        {
+          "name": "POST /api/accessories/save - Helmet",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/accessories/save", "host": ["{{baseUrl}}"], "path": ["api","accessories","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Helmet\"\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();",
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/accessories/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.name === 'Helmet');",
+                  "  if (item) pm.collectionVariables.set('helmetId', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/accessories/save - Basket",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/accessories/save", "host": ["{{baseUrl}}"], "path": ["api","accessories","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Basket\"\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/accessories/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.name === 'Basket');",
+                  "  if (item) pm.collectionVariables.set('basketId', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/accessories/save - Child Seat",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/accessories/save", "host": ["{{baseUrl}}"], "path": ["api","accessories","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Child Seat\"\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/accessories/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.name === 'Child Seat');",
+                  "  if (item) pm.collectionVariables.set('childSeatId', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/accessories/save - Phone Holder",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/accessories/save", "host": ["{{baseUrl}}"], "path": ["api","accessories","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Phone Holder\"\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/accessories/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.name === 'Phone Holder');",
+                  "  if (item) pm.collectionVariables.set('phoneHolderId', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seed data: Racks",
+      "item": [
+        {
+          "name": "POST /api/racks/save - Rack 1",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/racks/save", "host": ["{{baseUrl}}"], "path": ["api","racks","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"rackNumber\": 1,\n  \"name\": \"Rack 1\"\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/racks/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.rackNumber === 1);",
+                  "  if (item) pm.collectionVariables.set('rack1Id', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/racks/save - Rack 2",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/racks/save", "host": ["{{baseUrl}}"], "path": ["api","racks","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"rackNumber\": 2,\n  \"name\": \"Rack 2\"\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/racks/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.rackNumber === 2);",
+                  "  if (item) pm.collectionVariables.set('rack2Id', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/racks/save - Rack 3",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/racks/save", "host": ["{{baseUrl}}"], "path": ["api","racks","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"rackNumber\": 3,\n  \"name\": \"Rack 3\"\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/racks/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.rackNumber === 3);",
+                  "  if (item) pm.collectionVariables.set('rack3Id', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/racks/save - Rack 4",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/racks/save", "host": ["{{baseUrl}}"], "path": ["api","racks","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"rackNumber\": 4,\n  \"name\": \"Rack 4\"\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/racks/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.rackNumber === 4);",
+                  "  if (item) pm.collectionVariables.set('rack4Id', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seed data: Bicycles",
+      "item": [
+        {
+          "name": "POST /api/bicycles/save - Bicycle 1",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/bicycles/save", "host": ["{{baseUrl}}"], "path": ["api","bicycles","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"brand\": \"Giant\",\n  \"model\": \"Road\",\n  \"bikeCode\": \"BIC-001\",\n  \"rack\": {\"id\": \"{{rack1Id}}\"},\n  \"accessories\": [{\"id\": \"{{helmetId}}\"}, {\"id\": \"{{basketId}}\"}]\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/bicycles/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.bikeCode === 'BIC-001');",
+                  "  if (item) pm.collectionVariables.set('bike1Id', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/bicycles/save - Bicycle 2",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/bicycles/save", "host": ["{{baseUrl}}"], "path": ["api","bicycles","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"brand\": \"Trek\",\n  \"model\": \"City\",\n  \"bikeCode\": \"BIC-002\",\n  \"rack\": {\"id\": \"{{rack2Id}}\"},\n  \"accessories\": [{\"id\": \"{{helmetId}}\"}]\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/bicycles/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.bikeCode === 'BIC-002');",
+                  "  if (item) pm.collectionVariables.set('bike2Id', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/bicycles/save - Bicycle 3",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/bicycles/save", "host": ["{{baseUrl}}"], "path": ["api","bicycles","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"brand\": \"Specialized\",\n  \"model\": \"MTB\",\n  \"bikeCode\": \"BIC-003\",\n  \"rack\": {\"id\": \"{{rack3Id}}\"},\n  \"accessories\": [{\"id\": \"{{childSeatId}}\"}]\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/bicycles/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.bikeCode === 'BIC-003');",
+                  "  if (item) pm.collectionVariables.set('bike3Id', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seed data: Customers",
+      "item": [
+        {
+          "name": "POST /api/customers/save - Aline",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/customers/save", "host": ["{{baseUrl}}"], "path": ["api","customers","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Aline\",\n  \"lastName\": \"Mutangana\",\n  \"nationalId\": \"1200180045678901\",\n  \"phone\": \"250788000001\"\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/customers/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.nationalId === '1200180045678901');",
+                  "  if (item) pm.collectionVariables.set('customer1Id', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/customers/save - Eric",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/customers/save", "host": ["{{baseUrl}}"], "path": ["api","customers","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Eric\",\n  \"lastName\": \"Mutangana\",\n  \"nationalId\": \"1200180045678902\",\n  \"phone\": \"250788000002\"\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/customers/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.nationalId === '1200180045678902');",
+                  "  if (item) pm.collectionVariables.set('customer2Id', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/customers/save - David",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/customers/save", "host": ["{{baseUrl}}"], "path": ["api","customers","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"David\",\n  \"lastName\": \"Uwase\",\n  \"nationalId\": \"1200180045678903\",\n  \"phone\": \"250788000003\"\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/customers/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.nationalId === '1200180045678903');",
+                  "  if (item) pm.collectionVariables.set('customer3Id', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/customers/save - Grace",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/customers/save", "host": ["{{baseUrl}}"], "path": ["api","customers","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Grace\",\n  \"lastName\": \"Niyonsenga\",\n  \"nationalId\": \"1200180045678904\",\n  \"phone\": \"250788000004\"\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/customers/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.nationalId === '1200180045678904');",
+                  "  if (item) pm.collectionVariables.set('customer4Id', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/customers/save - Joel",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/customers/save", "host": ["{{baseUrl}}"], "path": ["api","customers","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Joel\",\n  \"lastName\": \"Kamana\",\n  \"nationalId\": \"1200180045678905\",\n  \"phone\": \"250788000005\"\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/customers/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.nationalId === '1200180045678905');",
+                  "  if (item) pm.collectionVariables.set('customer5Id', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seed data: Hires",
+      "item": [
+        {
+          "name": "POST /api/hires/save - Hire 1 (BOOKED)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/hires/save", "host": ["{{baseUrl}}"], "path": ["api","hires","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"hireDate\": \"2026-10-26\",\n  \"status\": \"BOOKED\",\n  \"hours\": 4,\n  \"hourlyRate\": 1500,\n  \"customer\": {\"id\": \"{{customer1Id}}\"},\n  \"bicycle\": {\"id\": \"{{bike1Id}}\"}\n}" }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201 or 400', function () { pm.expect([201,400]).to.include(pm.response.code); });",
+                  "pm.sendRequest(pm.request.url.origin + '/api/hires/all', function (err, res) {",
+                  "  const list = res.json();",
+                  "  const item = list.find(x => x.hireDate === '2026-10-26' && x.bicycle && x.bicycle.id === pm.collectionVariables.get('bike1Id'));",
+                  "  if (item) pm.collectionVariables.set('hire1Id', item.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/hires/save - Hire 2 (BOOKED)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/hires/save", "host": ["{{baseUrl}}"], "path": ["api","hires","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"hireDate\": \"2026-10-27\",\n  \"status\": \"BOOKED\",\n  \"hours\": 3,\n  \"hourlyRate\": 1800,\n  \"customer\": {\"id\": \"{{customer2Id}}\"},\n  \"bicycle\": {\"id\": \"{{bike2Id}}\"}\n}" }
+          }
+        },
+        {
+          "name": "POST /api/hires/save - Hire 3 (BOOKED)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/hires/save", "host": ["{{baseUrl}}"], "path": ["api","hires","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"hireDate\": \"2026-10-28\",\n  \"status\": \"BOOKED\",\n  \"hours\": 5,\n  \"hourlyRate\": 1700,\n  \"customer\": {\"id\": \"{{customer3Id}}\"},\n  \"bicycle\": {\"id\": \"{{bike3Id}}\"}\n}" }
+          }
+        },
+        {
+          "name": "POST /api/hires/save - Hire 4 (BOOKED)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/hires/save", "host": ["{{baseUrl}}"], "path": ["api","hires","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"hireDate\": \"2026-10-29\",\n  \"status\": \"BOOKED\",\n  \"hours\": 2,\n  \"hourlyRate\": 1600,\n  \"customer\": {\"id\": \"{{customer4Id}}\"},\n  \"bicycle\": {\"id\": \"{{bike1Id}}\"}\n}" }
+          }
+        },
+        {
+          "name": "POST /api/hires/save - Hire 5 (BOOKED)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/hires/save", "host": ["{{baseUrl}}"], "path": ["api","hires","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"hireDate\": \"2026-11-20\",\n  \"status\": \"BOOKED\",\n  \"hours\": 3,\n  \"hourlyRate\": 2000,\n  \"customer\": {\"id\": \"{{customer1Id}}\"},\n  \"bicycle\": {\"id\": \"{{bike2Id}}\"}\n}" }
+          }
+        },
+        {
+          "name": "PATCH /api/hires/{id}/status - Change Hire 5 to WITHDRAWN",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/hires/{{hire5Id}}/status?status=WITHDRAWN", "host": ["{{baseUrl}}"], "path": ["api","hires","{{hire5Id}}","status"], "query": [{ "key": "status", "value": "WITHDRAWN" }] }
+          }
+        },
+        {
+          "name": "POST /api/hires/save - Hire 6 (BOOKED) on same bike/date after WITHDRAWN",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/hires/save", "host": ["{{baseUrl}}"], "path": ["api","hires","save"] },
+            "body": { "mode": "raw", "raw": "{\n  \"hireDate\": \"2026-11-20\",\n  \"status\": \"BOOKED\",\n  \"hours\": 4,\n  \"hourlyRate\": 2100,\n  \"customer\": {\"id\": \"{{customer5Id}}\"},\n  \"bicycle\": {\"id\": \"{{bike2Id}}\"}\n}" }
+          }
+        },
+        {
+          "name": "PATCH /api/hires/{id}/status - Change Hire 1 to ON_RENT",
+          "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/hires/{{hire1Id}}/status?status=ON_RENT", "host": ["{{baseUrl}}"], "path": ["api","hires","{{hire1Id}}","status"], "query": [{ "key": "status", "value": "ON_RENT" }] } }
+        },
+        {
+          "name": "PATCH /api/hires/{id}/status - Change Hire 1 to RETURNED",
+          "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/hires/{{hire1Id}}/status?status=RETURNED", "host": ["{{baseUrl}}"], "path": ["api","hires","{{hire1Id}}","status"], "query": [{ "key": "status", "value": "RETURNED" }] } }
+        },
+        {
+          "name": "POST /api/return-charges/save - Return charge for Hire 1",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/return-charges/save?hireId={{hire1Id}}", "host": ["{{baseUrl}}"], "path": ["api","return-charges","save"], "query": [{ "key": "hireId", "value": "{{hire1Id}}" }] },
+            "body": { "mode": "raw", "raw": "{\n  \"chargeName\": \"Brake Repair\",\n  \"notes\": \"Minor mechanical repair\",\n  \"amount\": 2500\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "A1-F2 + Bonus requirements",
+      "item": [
+        { "name": "A1 Accessory save", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/accessories/save", "host": ["{{baseUrl}}"], "path": ["api","accessories","save"] }, "body": { "mode": "raw", "raw": "{\n  \"name\": \"Safety Vest\"\n}" } } },
+        { "name": "A1 Rack save", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/racks/save", "host": ["{{baseUrl}}"], "path": ["api","racks","save"] }, "body": { "mode": "raw", "raw": "{\n  \"rackNumber\": 99,\n  \"name\": \"Test Rack\"\n}" } } },
+        { "name": "A1 Bicycle save", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/bicycles/save", "host": ["{{baseUrl}}"], "path": ["api","bicycles","save"] }, "body": { "mode": "raw", "raw": "{\n  \"brand\": \"TestBrand\",\n  \"model\": \"TestModel\",\n  \"bikeCode\": \"TEST-001\",\n  \"rack\": {\"id\": \"{{rack4Id}}\"},\n  \"accessories\": [{\"id\": \"{{helmetId}}\"}]\n}" } } },
+        { "name": "A1 Customer save", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/customers/save", "host": ["{{baseUrl}}"], "path": ["api","customers","save"] }, "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"User\",\n  \"nationalId\": \"TEST123456789\",\n  \"phone\": \"250700000000\"\n}" } } },
+        { "name": "A1 Hire save", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/hires/save", "host": ["{{baseUrl}}"], "path": ["api","hires","save"] }, "body": { "mode": "raw", "raw": "{\n  \"hireDate\": \"2026-11-25\",\n  \"status\": \"BOOKED\",\n  \"hours\": 6,\n  \"hourlyRate\": 1750,\n  \"customer\": {\"id\": \"{{customer5Id}}\"},\n  \"bicycle\": {\"id\": \"{{bike3Id}}\"}\n}" } } },
+        { "name": "A2 GET /api/accessories/all", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/accessories/all", "host": ["{{baseUrl}}"], "path": ["api","accessories","all"] } } },
+        { "name": "A2 GET /api/racks/all", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/racks/all", "host": ["{{baseUrl}}"], "path": ["api","racks","all"] } } },
+        { "name": "A2 GET /api/bicycles/all", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/bicycles/all", "host": ["{{baseUrl}}"], "path": ["api","bicycles","all"] } } },
+        { "name": "A2 GET /api/customers/all", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/customers/all", "host": ["{{baseUrl}}"], "path": ["api","customers","all"] } } },
+        { "name": "A2 GET /api/hires/all", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/hires/all", "host": ["{{baseUrl}}"], "path": ["api","hires","all"] } } },
+        { "name": "A3 GET /api/accessories/{id}", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/accessories/{{helmetId}}", "host": ["{{baseUrl}}"], "path": ["api","accessories","{{helmetId}}"] } } },
+        { "name": "A3 GET /api/racks/{id}", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/racks/{{rack2Id}}", "host": ["{{baseUrl}}"], "path": ["api","racks","{{rack2Id}}"] } } },
+        { "name": "A3 GET /api/bicycles/{id}", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/bicycles/{{bike1Id}}", "host": ["{{baseUrl}}"], "path": ["api","bicycles","{{bike1Id}}"] } } },
+        { "name": "A3 GET /api/customers/{id}", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/customers/{{customer1Id}}", "host": ["{{baseUrl}}"], "path": ["api","customers","{{customer1Id}}"] } } },
+        { "name": "A3 GET /api/hires/{id}", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/hires/{{hire1Id}}", "host": ["{{baseUrl}}"], "path": ["api","hires","{{hire1Id}}"] } } },
+        { "name": "A4 PUT /api/accessories/update/{id}", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/accessories/update/{{helmetId}}", "host": ["{{baseUrl}}"], "path": ["api","accessories","update","{{helmetId}}"] }, "body": { "mode": "raw", "raw": "{\n  \"name\": \"Helmet Pro\"\n}" } } },
+        { "name": "A4 PUT /api/racks/update/{id}", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/racks/update/{{rack2Id}}", "host": ["{{baseUrl}}"], "path": ["api","racks","update","{{rack2Id}}"] }, "body": { "mode": "raw", "raw": "{\n  \"rackNumber\": 22,\n  \"name\": \"Rack 22\"\n}" } } },
+        { "name": "A4 PUT /api/bicycles/update/{id}", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/bicycles/update/{{bike1Id}}", "host": ["{{baseUrl}}"], "path": ["api","bicycles","update","{{bike1Id}}"] }, "body": { "mode": "raw", "raw": "{\n  \"brand\": \"Giant Updated\",\n  \"model\": \"Road Pro\",\n  \"bikeCode\": \"BIC-001-UPD\",\n  \"rack\": {\"id\": \"{{rack1Id}}\"},\n  \"accessories\": [{\"id\": \"{{helmetId}}\"}]\n}" } } },
+        { "name": "A4 PUT /api/customers/update/{id}", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/customers/update/{{customer1Id}}", "host": ["{{baseUrl}}"], "path": ["api","customers","update","{{customer1Id}}"] }, "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Aline\",\n  \"lastName\": \"Mutangana\",\n  \"nationalId\": \"1200180045678901\",\n  \"phone\": \"250788000009\"\n}" } } },
+        { "name": "A4 PUT /api/hires/update/{id}", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/hires/update/{{hire1Id}}", "host": ["{{baseUrl}}"], "path": ["api","hires","update","{{hire1Id}}"] }, "body": { "mode": "raw", "raw": "{\n  \"hireDate\": \"2026-10-26\",\n  \"status\": \"ON_RENT\",\n  \"hours\": 8,\n  \"hourlyRate\": 1800,\n  \"customer\": {\"id\": \"{{customer1Id}}\"},\n  \"bicycle\": {\"id\": \"{{bike1Id}}\"}\n}" } } },
+        { "name": "A5 DELETE /api/accessories/delete/{id}", "request": { "method": "DELETE", "url": { "raw": "{{baseUrl}}/api/accessories/delete/{{helmetId}}", "host": ["{{baseUrl}}"], "path": ["api","accessories","delete","{{helmetId}}"] } } },
+        { "name": "A5 DELETE /api/racks/delete/{id}", "request": { "method": "DELETE", "url": { "raw": "{{baseUrl}}/api/racks/delete/{{rack2Id}}", "host": ["{{baseUrl}}"], "path": ["api","racks","delete","{{rack2Id}}"] } } },
+        { "name": "A5 DELETE /api/bicycles/delete/{id}", "request": { "method": "DELETE", "url": { "raw": "{{baseUrl}}/api/bicycles/delete/{{bike3Id}}", "host": ["{{baseUrl}}"], "path": ["api","bicycles","delete","{{bike3Id}}"] } } },
+        { "name": "A5 DELETE /api/customers/delete/{id}", "request": { "method": "DELETE", "url": { "raw": "{{baseUrl}}/api/customers/delete/{{customer5Id}}", "host": ["{{baseUrl}}"], "path": ["api","customers","delete","{{customer5Id}}"] } } },
+        { "name": "A5 DELETE /api/hires/delete/{id}", "request": { "method": "DELETE", "url": { "raw": "{{baseUrl}}/api/hires/delete/{{hire1Id}}", "host": ["{{baseUrl}}"], "path": ["api","hires","delete","{{hire1Id}}"] } } },
+        { "name": "B1 GET /api/customers/by-last-name", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/customers/by-last-name?lastName=mutangana", "host": ["{{baseUrl}}"], "path": ["api","customers","by-last-name"], "query": [{ "key": "lastName", "value": "mutangana" }] } } },
+        { "name": "B2 GET /api/hires/by-status", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/hires/by-status?status=BOOKED", "host": ["{{baseUrl}}"], "path": ["api","hires","by-status"], "query": [{ "key": "status", "value": "BOOKED" }] } } },
+        { "name": "B3 GET /api/hires/between", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/hires/between?start=2026-10-01&end=2026-10-31", "host": ["{{baseUrl}}"], "path": ["api","hires","between"], "query": [{ "key": "start", "value": "2026-10-01" }, { "key": "end", "value": "2026-10-31" }] } } },
+        { "name": "C1 GET /api/bicycles/by-accessory?name=helm", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/bicycles/by-accessory?name=helm", "host": ["{{baseUrl}}"], "path": ["api","bicycles","by-accessory"], "query": [{ "key": "name", "value": "helm" }] } } },
+        { "name": "C2 GET /api/racks/free", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/racks/free", "host": ["{{baseUrl}}"], "path": ["api","racks","free"] } } },
+        { "name": "C3 GET /api/accessories/unused", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/accessories/unused", "host": ["{{baseUrl}}"], "path": ["api","accessories","unused"] } } },
+        { "name": "C4 GET /api/customers/of-bicycle/{bicycleId}", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/customers/of-bicycle/{{bike1Id}}", "host": ["{{baseUrl}}"], "path": ["api","customers","of-bicycle","{{bike1Id}}"] } } },
+        { "name": "D1 POST /api/hires/save - past-date rejection", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/hires/save", "host": ["{{baseUrl}}"], "path": ["api","hires","save"] }, "body": { "mode": "raw", "raw": "{\n  \"hireDate\": \"2026-10-20\",\n  \"status\": \"BOOKED\",\n  \"hours\": 4,\n  \"hourlyRate\": 1600,\n  \"customer\": {\"id\": \"{{customer1Id}}\"},\n  \"bicycle\": {\"id\": \"{{bike1Id}}\"}\n}" } } },
+        { "name": "D2 PATCH /api/hires/{id}/status?status=ON_RENT", "request": { "method": "PATCH", "url": { "raw": "{{baseUrl}}/api/hires/{{hire1Id}}/status?status=ON_RENT", "host": ["{{baseUrl}}"], "path": ["api","hires","{{hire1Id}}","status"], "query": [{ "key": "status", "value": "ON_RENT" }] } } },
+        { "name": "D3 PUT /api/bicycles/{bicycleId}/accessories/{accessoryId}", "request": { "method": "PUT", "url": { "raw": "{{baseUrl}}/api/bicycles/{{bike1Id}}/accessories/{{phoneHolderId}}", "host": ["{{baseUrl}}"], "path": ["api","bicycles","{{bike1Id}}","accessories","{{phoneHolderId}}"] } } },
+        { "name": "D4 PATCH /api/bicycles/{bicycleId}/rack?rackNumber=4", "request": { "method": "PATCH", "url": { "raw": "{{baseUrl}}/api/bicycles/{{bike1Id}}/rack?rackNumber=4", "host": ["{{baseUrl}}"], "path": ["api","bicycles","{{bike1Id}}","rack"], "query": [{ "key": "rackNumber", "value": "4" }] } } },
+        { "name": "E1 POST /api/return-charges/save?hireId=...", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/return-charges/save?hireId={{hire1Id}}", "host": ["{{baseUrl}}"], "path": ["api","return-charges","save"], "query": [{ "key": "hireId", "value": "{{hire1Id}}" }] }, "body": { "mode": "raw", "raw": "{\n  \"chargeName\": \"Helmet Replacement\",\n  \"notes\": \"New helmet due to damage\",\n  \"amount\": 3000\n}" } } },
+        { "name": "E2 GET /api/return-charges/customer/{nationalId}", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/return-charges/customer/1200180045678901", "host": ["{{baseUrl}}"], "path": ["api","return-charges","customer","1200180045678901"] } } },
+        { "name": "E3 DELETE /api/return-charges/delete/{id}", "request": { "method": "DELETE", "url": { "raw": "{{baseUrl}}/api/return-charges/delete/{{returnChargeId}}", "host": ["{{baseUrl}}"], "path": ["api","return-charges","delete","{{returnChargeId}}"] } } },
+        { "name": "F1 GET /api/hires/stats/by-status", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/hires/stats/by-status", "host": ["{{baseUrl}}"], "path": ["api","hires","stats","by-status"] } } },
+        { "name": "F2 PATCH /api/hires/cancel-day", "request": { "method": "PATCH", "url": { "raw": "{{baseUrl}}/api/hires/cancel-day?bicycleId={{bike2Id}}&date=2026-11-20", "host": ["{{baseUrl}}"], "path": ["api","hires","cancel-day"], "query": [{ "key": "bicycleId", "value": "{{bike2Id}}" }, { "key": "date", "value": "2026-11-20" }] } } },
+        { "name": "Bonus GET /api/dashboard/summary", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/dashboard/summary", "host": ["{{baseUrl}}"], "path": ["api","dashboard","summary"] } } },
+        { "name": "Bonus GET /api/hires/page?page=0&size=5&sort=hireDate,desc", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/hires/page?page=0&size=5&sort=hireDate,desc", "host": ["{{baseUrl}}"], "path": ["api","hires","page"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "5" }, { "key": "sort", "value": "hireDate,desc" }] } } }
+      ]
+    }
+  ]
+}

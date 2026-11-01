@@ -1,0 +1,277 @@
+@baseUrl = http://localhost:8080
+
+### Seed data: Accessories
+POST {{baseUrl}}/api/accessories/save
+Content-Type: application/json
+
+{"name":"Helmet"}
+
+###
+POST {{baseUrl}}/api/accessories/save
+Content-Type: application/json
+
+{"name":"Basket"}
+
+###
+POST {{baseUrl}}/api/accessories/save
+Content-Type: application/json
+
+{"name":"Child Seat"}
+
+###
+POST {{baseUrl}}/api/accessories/save
+Content-Type: application/json
+
+{"name":"Phone Holder"}
+
+### Seed data: Racks
+POST {{baseUrl}}/api/racks/save
+Content-Type: application/json
+
+{"rackNumber":1,"name":"Rack 1"}
+
+###
+POST {{baseUrl}}/api/racks/save
+Content-Type: application/json
+
+{"rackNumber":2,"name":"Rack 2"}
+
+###
+POST {{baseUrl}}/api/racks/save
+Content-Type: application/json
+
+{"rackNumber":3,"name":"Rack 3"}
+
+###
+POST {{baseUrl}}/api/racks/save
+Content-Type: application/json
+
+{"rackNumber":4,"name":"Rack 4"}
+
+### Seed data: Bicycles
+POST {{baseUrl}}/api/bicycles/save
+Content-Type: application/json
+
+{"brand":"Giant","model":"Road","bikeCode":"BIC-001","rack":{"id":"{{rack1Id}}"},"accessories":[{"id":"{{helmetId}}"},{"id":"{{basketId}}"}]}
+
+###
+POST {{baseUrl}}/api/bicycles/save
+Content-Type: application/json
+
+{"brand":"Trek","model":"City","bikeCode":"BIC-002","rack":{"id":"{{rack2Id}}"},"accessories":[{"id":"{{helmetId}}"}]}
+
+###
+POST {{baseUrl}}/api/bicycles/save
+Content-Type: application/json
+
+{"brand":"Specialized","model":"MTB","bikeCode":"BIC-003","rack":{"id":"{{rack3Id}}"},"accessories":[{"id":"{{childSeatId}}"}]}
+
+### Seed data: Customers
+POST {{baseUrl}}/api/customers/save
+Content-Type: application/json
+
+{"firstName":"Aline","lastName":"Mutangana","nationalId":"1200180045678901","phone":"250788000001"}
+
+###
+POST {{baseUrl}}/api/customers/save
+Content-Type: application/json
+
+{"firstName":"Eric","lastName":"Mutangana","nationalId":"1200180045678902","phone":"250788000002"}
+
+###
+POST {{baseUrl}}/api/customers/save
+Content-Type: application/json
+
+{"firstName":"David","lastName":"Uwase","nationalId":"1200180045678903","phone":"250788000003"}
+
+###
+POST {{baseUrl}}/api/customers/save
+Content-Type: application/json
+
+{"firstName":"Grace","lastName":"Niyonsenga","nationalId":"1200180045678904","phone":"250788000004"}
+
+###
+POST {{baseUrl}}/api/customers/save
+Content-Type: application/json
+
+{"firstName":"Joel","lastName":"Kamana","nationalId":"1200180045678905","phone":"250788000005"}
+
+### Seed data: Hires
+POST {{baseUrl}}/api/hires/save
+Content-Type: application/json
+
+{"hireDate":"2026-10-26","status":"BOOKED","hours":4,"hourlyRate":1500,"customer":{"id":"{{customer1Id}}"},"bicycle":{"id":"{{bike1Id}}"}}
+
+###
+POST {{baseUrl}}/api/hires/save
+Content-Type: application/json
+
+{"hireDate":"2026-10-27","status":"BOOKED","hours":3,"hourlyRate":1800,"customer":{"id":"{{customer2Id}}"},"bicycle":{"id":"{{bike2Id}}"}}
+
+###
+POST {{baseUrl}}/api/hires/save
+Content-Type: application/json
+
+{"hireDate":"2026-10-28","status":"BOOKED","hours":5,"hourlyRate":1700,"customer":{"id":"{{customer3Id}}"},"bicycle":{"id":"{{bike3Id}}"}}
+
+###
+POST {{baseUrl}}/api/hires/save
+Content-Type: application/json
+
+{"hireDate":"2026-10-29","status":"BOOKED","hours":2,"hourlyRate":1600,"customer":{"id":"{{customer4Id}}"},"bicycle":{"id":"{{bike1Id}}"}}
+
+###
+POST {{baseUrl}}/api/hires/save
+Content-Type: application/json
+
+{"hireDate":"2026-11-20","status":"BOOKED","hours":3,"hourlyRate":2000,"customer":{"id":"{{customer1Id}}"},"bicycle":{"id":"{{bike2Id}}"}}
+
+###
+PATCH {{baseUrl}}/api/hires/{{hire5Id}}/status?status=WITHDRAWN
+
+###
+POST {{baseUrl}}/api/hires/save
+Content-Type: application/json
+
+{"hireDate":"2026-11-20","status":"BOOKED","hours":4,"hourlyRate":2100,"customer":{"id":"{{customer5Id}}"},"bicycle":{"id":"{{bike2Id}}"}}
+
+###
+PATCH {{baseUrl}}/api/hires/{{hire1Id}}/status?status=ON_RENT
+
+###
+PATCH {{baseUrl}}/api/hires/{{hire1Id}}/status?status=RETURNED
+
+###
+POST {{baseUrl}}/api/return-charges/save?hireId={{hire1Id}}
+Content-Type: application/json
+
+{"chargeName":"Brake Repair","notes":"Minor mechanical repair","amount":2500}
+
+### A1-A5 CRUD
+GET {{baseUrl}}/api/accessories/all
+
+###
+GET {{baseUrl}}/api/racks/all
+
+###
+GET {{baseUrl}}/api/bicycles/all
+
+###
+GET {{baseUrl}}/api/customers/all
+
+###
+GET {{baseUrl}}/api/hires/all
+
+###
+GET {{baseUrl}}/api/accessories/{{helmetId}}
+
+###
+GET {{baseUrl}}/api/racks/{{rack2Id}}
+
+###
+GET {{baseUrl}}/api/bicycles/{{bike1Id}}
+
+###
+GET {{baseUrl}}/api/customers/{{customer1Id}}
+
+###
+GET {{baseUrl}}/api/hires/{{hire1Id}}
+
+###
+PUT {{baseUrl}}/api/accessories/update/{{helmetId}}
+Content-Type: application/json
+
+{"name":"Helmet Pro"}
+
+###
+PUT {{baseUrl}}/api/racks/update/{{rack2Id}}
+Content-Type: application/json
+
+{"rackNumber":22,"name":"Rack 22"}
+
+###
+PUT {{baseUrl}}/api/bicycles/update/{{bike1Id}}
+Content-Type: application/json
+
+{"brand":"Giant Updated","model":"Road Pro","bikeCode":"BIC-001-UPD","rack":{"id":"{{rack1Id}}"},"accessories":[{"id":"{{helmetId}}"}]}
+
+###
+PUT {{baseUrl}}/api/customers/update/{{customer1Id}}
+Content-Type: application/json
+
+{"firstName":"Aline","lastName":"Mutangana","nationalId":"1200180045678901","phone":"250788000009"}
+
+###
+PUT {{baseUrl}}/api/hires/update/{{hire1Id}}
+Content-Type: application/json
+
+{"hireDate":"2026-10-26","status":"ON_RENT","hours":8,"hourlyRate":1800,"customer":{"id":"{{customer1Id}}"},"bicycle":{"id":"{{bike1Id}}"}}
+
+###
+DELETE {{baseUrl}}/api/accessories/delete/{{helmetId}}
+
+###
+DELETE {{baseUrl}}/api/racks/delete/{{rack2Id}}
+
+###
+DELETE {{baseUrl}}/api/bicycles/delete/{{bike3Id}}
+
+###
+DELETE {{baseUrl}}/api/customers/delete/{{customer5Id}}
+
+###
+DELETE {{baseUrl}}/api/hires/delete/{{hire1Id}}
+
+### B1 to F2
+GET {{baseUrl}}/api/customers/by-last-name?lastName=mutangana
+
+###
+GET {{baseUrl}}/api/hires/by-status?status=BOOKED
+
+###
+GET {{baseUrl}}/api/hires/between?start=2026-10-01&end=2026-10-31
+
+###
+GET {{baseUrl}}/api/bicycles/by-accessory?name=helm
+
+###
+GET {{baseUrl}}/api/racks/free
+
+###
+GET {{baseUrl}}/api/accessories/unused
+
+###
+GET {{baseUrl}}/api/customers/of-bicycle/{{bike1Id}}
+
+###
+POST {{baseUrl}}/api/hires/save
+Content-Type: application/json
+
+{"hireDate":"2026-10-20","status":"BOOKED","hours":4,"hourlyRate":1600,"customer":{"id":"{{customer1Id}}"},"bicycle":{"id":"{{bike1Id}}"}}
+
+###
+PATCH {{baseUrl}}/api/hires/{{hire1Id}}/status?status=ON_RENT
+
+###
+PUT {{baseUrl}}/api/bicycles/{{bike1Id}}/accessories/{{phoneHolderId}}
+
+###
+PATCH {{baseUrl}}/api/bicycles/{{bike1Id}}/rack?rackNumber=4
+
+###
+GET {{baseUrl}}/api/return-charges/customer/1200180045678901
+
+###
+DELETE {{baseUrl}}/api/return-charges/delete/{{returnChargeId}}
+
+###
+GET {{baseUrl}}/api/hires/stats/by-status
+
+###
+PATCH {{baseUrl}}/api/hires/cancel-day?bicycleId={{bike2Id}}&date=2026-11-20
+
+### Bonus
+GET {{baseUrl}}/api/dashboard/summary
+
+###
+GET {{baseUrl}}/api/hires/page?page=0&size=5&sort=hireDate,desc

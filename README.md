@@ -2,7 +2,7 @@
 
 ## Bicycle Rent Management System Backend
 
-- Student Name: Student Name
+- Student Name: Mutangana Arsene Honore
 - Student ID: STID-26703
 - Project Name: Bicycle Rent Management System Backend
 - GitHub Repository: https://github.com/STID-26703/bicycle-rent-management-system-backend
